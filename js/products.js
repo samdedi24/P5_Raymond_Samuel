@@ -1,4 +1,5 @@
-const API = "http://localhost:3000/api/cameras"; 
+const productChoose = "cameras"
+const API = "http://localhost:3000/api/" + productChoose + "/"; 
 //id tri dans l'API
 
 let idProduct = "";
@@ -95,7 +96,7 @@ async function detailProduct(){
     document.getElementById("imgProduct").setAttribute("src", productSelected.imageUrl);
     document.getElementById("nameProduct").innerHTML = productSelected.name;
     document.getElementById("descriptionProduct").innerHTML = productSelected.description;
-    document.getElementById("priceProduct").innerHTML = productSelected.price / 100 + " euros";
+	document.getElementById("priceProduct").innerHTML = productSelected.price / 100 + " euros";
 };
 
  //Fonction ajouter le produit au panier
@@ -109,8 +110,4 @@ async function detailProduct(){
   	console.log("Admin : le produit a été ajouté au panier");
   	alert("Vous avez ajouté ce produit dans votre panier")
   });
-  };
-
-addition = () =>{
-
-}
+};
