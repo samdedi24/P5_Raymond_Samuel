@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Orinoco</title>
+</head>
+<body>
+    <header class="top">
+        <h1>Orinoco</h1>
+        <nav class="nav_top">
+            <a href="index.html" class="nav_link">Accueil</a>
+            <a href="cart.html" class="nav_link">Panier</a>
+        </nav>
+    </header>
+
+    <section class="order-comfirm_card">
+        <div class="order-comfirm_card_resume">
+            <h2 class="order-comfirm_card_resume_congrat">Merci pour vos achats <span id="lastName"></span>!</h2>
+            <div class="order-comfirm_card_resume_info">
+                <p>Numéro de commande : <span id="orderId"></span></p>
+            </div>
+        </div>
+        <nav class="order_comfirm_card_nac">
+            <p>Retour accueil <a href="index.html">Accueil</a></p>
+        </nav>
+    </section>
+
+    <script src="js/products.js"></script>
+    <script>
+        resultOrder()
+    </script>
+</body>
+</html>

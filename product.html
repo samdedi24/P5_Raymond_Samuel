@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Orinoco Produits</title>
+</head>
+<body class="container">
+    <header class="top">
+        <h1>Orinoco</h1>
+        <nav class="nav_top">
+            <a href="index.html" class="nav_link">Accueil</a>
+            <a href="cart.html" class="nav_link">Panier</a>
+        </nav>
+    </header>
+    <main id="main">
+        <div>
+
+        </div>
+        <section id="section" class="sheet-product">
+            <h2 id="nameProduct" class="sheet-product">Nom du produit</h2>
+            <div class="flex-block">
+                <div class="sheet-product_img">
+                    <img src="#" id="imgProduct" alt="Photo du produit">
+                </div>
+                <div class="sheet-product_description">
+                    <p class="sheet-product_description_head">Description : </p>
+                    <p id="descriptionProduct" class="sheet-product_description_resume"></p>
+                    <label for="optionSelect" class="sheet-product_description_head">Choisissez votre option</label>
+                    <select name="option" id="optionSelect">
+                        <option value="">Faites un choix</option>
+                    </select>
+                    <p class="sheet-product_description_head">Prix : </p>
+                    <p id="priceProduct"></p>
+                    <div class="sheet-product_description_order">
+                        <button class="btn" id="addProductCart">Mettre dans le panier</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/products.js"></script>
+    <script>
+        detailProduct();
+        addCart()
+    </script>
+</body>
+</html>
