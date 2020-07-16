@@ -79,9 +79,9 @@ async function allProductsList(){
 
       	productNom.textContent = product.name;
       	productPrix.textContent = product.price / 100 + " euros";
-      	productLink.textContent = "Voir le produit";
-      });
-	};
+		productLink.textContent = "Voir le produit";
+    });
+}
 
 
 async function detailProduct(){
@@ -97,6 +97,15 @@ async function detailProduct(){
     document.getElementById("nameProduct").innerHTML = productSelected.name;
     document.getElementById("descriptionProduct").innerHTML = productSelected.description;
 	document.getElementById("priceProduct").innerHTML = productSelected.price / 100 + " euros";
+	
+	switch(productChoose){
+		case "cameras":
+		productSelected.lenses.forEach((product)=>{
+			let optionProduct = document.createElement("option");
+			document.getElementById("optionSelect").appendChild(optionProduct).innerHTML = product;
+		});
+		break;
+	}
 };
 
  //Fonction ajouter le produit au panier
