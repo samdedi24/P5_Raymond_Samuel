@@ -7,33 +7,39 @@
     <title>Orinoco Produits</title>
 </head>
 <body class="container">
-    <header class="top">
-        <h1>Orinoco</h1>
-        <nav class="nav_top">
-            <a href="index.html" class="nav_link">Accueil</a>
-            <a href="cart.html" class="nav_link">Panier</a>
-        </nav>
+    <header>
+        <div class="overlay"></div>
+            <nav>
+                <h1>Orinoco</h1>
+                <ul>
+                <li><a href="index.html" class="nav_link">Accueil</a></li>
+                <li><a href="#">A propos</a></li>
+                <li class="cart">
+                    <a href="cart.html">Panier<span> 0</span></a>
+                </li>
+                </ul>
+            </nav>
     </header>
     <main id="main">
         <div>
 
         </div>
-        <section id="section" class="sheet-product">
-            <h2 id="nameProduct" class="sheet-product">Nom du produit</h2>
+        <section id="section" class="bloc-product">
+            <h2 id="nameProduct">Nom du produit</h2>
             <div class="flex-block">
-                <div class="sheet-product_img">
+                <div class="">
                     <img src="#" id="imgProduct" alt="Photo du produit">
                 </div>
-                <div class="sheet-product_description">
-                    <p class="sheet-product_description_head">Description : </p>
-                    <p id="descriptionProduct" class="sheet-product_description_resume"></p>
-                    <label for="optionSelect" class="sheet-product_description_head">Choisissez votre option</label>
+                <div class="">
+                    <p class="">Description : </p>
+                    <p id="descriptionProduct" class=""></p>
+                    <label for="optionSelect" class="">Choisissez votre option</label>
                     <select name="option" id="optionSelect">
                         <option value="">Faites un choix</option>
                     </select>
-                    <p class="sheet-product_description_head">Prix : </p>
+                    <p class="">Prix : </p>
                     <p id="priceProduct"></p>
-                    <div class="sheet-product_description_order">
+                    <div class="">
                         <button class="btn" id="addProductCart">Mettre dans le panier</button>
                     </div>
                 </div>
@@ -45,7 +51,7 @@
     <script src="js/main.js"></script>
     <script>
         detailProduct();
-        addCart()
+        addCart();
     </script>
 </body>
 </html>

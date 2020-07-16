@@ -7,12 +7,18 @@
     <title>Orinoco</title>
 </head>
 <body class="container">
-    <header class="top">
-        <h1>Orinoco</h1>
-        <nav class="nav_top">
-            <a href="index.html" class="nav_link">Accueil</a>
-            <a href="cart.html" class="nav_link">Panier</a>
-        </nav>
+    <header>
+        <div class="overlay"></div>
+            <nav>
+                <h1>Orinoco</h1>
+                <ul>
+                <li><a href="index.html" class="nav_link">Accueil</a></li>
+                <li><a href="#">A propos</a></li>
+                <li class="cart">
+                    <a href="cart.html">Panier<span> 0</span></a>
+                </li>
+                </ul>
+            </nav>
     </header>
 
     <main class="cart flex-block">
@@ -57,7 +63,7 @@
     <script src="js/cart.js"></script>
     <script src="js/order.js"></script>
     <script>
-        addition()
+        totalCost()
         validForm();
     </script>
 </body>

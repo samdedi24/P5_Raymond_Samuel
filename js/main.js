@@ -1,20 +1,7 @@
 const productChoose = "cameras"
 const API = "http://localhost:3000/api/" + productChoose + "/"; 
-//id tri dans l'API
 
 let idProduct = "";
-
-if(localStorage.getItem("userCart")){
-	console.log("Admin : le panier existe dans le localStorage");
-}else{
-	console.log("Admin : Le panier n'existe pas, vas être créer et l'envoyer dans le localStorage");
-  	let cartInit = [];
-  	localStorage.setItem("userCart", JSON.stringify(cartInit));
-  };
-
-  	let contact;
-  	let products = [];
-	let userCart = JSON.parse(localStorage.getItem("userCart"));
 
 //Appel de l'API
 
@@ -26,13 +13,13 @@ getProducts = () =>{
 			if(this.readyState == XMLHttpRequest.DONE && this.status == 200) 
 			{
 				resolve(JSON.parse(this.responseText));
-				console.log("Admin : connection ok");
+				console.log("connection ok");
 				error = document.getElementById("error");
 				if(error){
 					error.remove();
 				}
-			}else{
-				console.log("Admin : ERROR connection API");
+			} else {
+				console.log("ERROR");
 			}
 		}
 		request.open("GET", API + idProduct);
@@ -41,8 +28,7 @@ getProducts = () =>{
 };
 
 
-/*Création du HTML après appel de l'API
-**********************************************/
+/*Création du HTML après appel de l'API*/
     
 async function allProductsList(){
 		const products = await getProducts();
@@ -79,7 +65,7 @@ async function allProductsList(){
 
       	productNom.textContent = product.name;
       	productPrix.textContent = product.price / 100 + " euros";
-		productLink.textContent = "Voir le produit";
+		productLink.textContent = "Afficher la page du produit";
     });
 }
 
