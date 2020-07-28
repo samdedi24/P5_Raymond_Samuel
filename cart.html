@@ -21,9 +21,9 @@
             </nav>
     </header>
 
-    <main class="cart flex-block">
-        <div id="cart-resume">
-            <p id="cartEmpty">Votre panier est vide</p>
+    <main class="">
+        <div id="cart-summary">
+            <p id="resume-cart">Votre panier est vide</p>
         </div>
         <div class="form">
             <form method="post" name="form-cart">
@@ -31,40 +31,33 @@
                     <legend>Civilité</legend>
                     <div class="form_group">
                         <label for="forNom">Nom :</label>
-                        <input type="text" id="forNom" class="form-control input-control" required name="forNom">
+                        <input type="text" id="forNom" class="" required name="forNom">
                     </div>
                     <div class="form_group">
                         <label for="formPrenom" class="right-inline">Prénom :</label>
-                        <input type="text" id="formPrenom" class="form-control input-control" required name="formPrenom">
+                        <input type="text" id="formPrenom" class="" required name="formPrenom">
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>Coordonnées</legend>
                     <div class="form__group">
 						<label for="formMail">E-mail :</label>
-						<input type="email" id="formMail" class="form-control input-control" required name="formMail">
+						<input type="email" id="formMail" class="" required name="formMail">
 					</div>
 					<div class="form__group">
 						<label for="formAdresse">Adresse :</label>
-						<input type="text" id="formAdresse" class="form-control input-control" required name="formAdresse">
+						<input type="text" id="formAdresse" class="" required name="formAdresse">
 					</div>
 					<div class="form__group">
 						<label for="formVille">Ville :</label>
-						<input type="text" id="formVille" class="form-control input-control" required name="formVille">
+						<input type="text" id="formVille" class="" required name="formVille">
 					</div>
                 </fieldset>
-                <input type="button" value="Je valide mon panier et mes infos" class="btn btn--form" id="sendPost">
+                <input type="button" value="Je valide les infos et mon panier" class="" id="passedOrder">
             </form>
         </div>
     </main>
 
-    <script src="js/products.js"></script>
-    <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
-    <script src="js/order.js"></script>
-    <script>
-        totalCost()
-        validForm();
-    </script>
 </body>
 </html>

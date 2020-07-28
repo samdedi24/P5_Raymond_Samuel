@@ -38,35 +38,43 @@ async function allProductsList(){
 		let main = document.getElementById("main");
 		main.appendChild(listProduct);
 
-		products.forEach((product) =>
-		{ 
+		products.forEach((product) => { 
       	let productBlock = document.createElement("div");
       	let productLeft = document.createElement("div");
       	let productRight = document.createElement("div");
       	let productImage = document.createElement("img");
-      	let productNom = document.createElement("h2");
-      	let productPrix = document.createElement("p");
+      	let productName = document.createElement("h2");
+      	let productPrice = document.createElement("p");
       	let productLink = document.createElement("a");
-
-      	productBlock.setAttribute("class", "list-product__block");
+		//Class pour modification css
       	productLeft.setAttribute("class", "list-product__block--left");
-      	productRight.setAttribute("class", "list-product__block--right");
       	productImage.setAttribute("src", product.imageUrl);
       	productImage.setAttribute("alt", "image du produit"); 
       	productLink.setAttribute("href", "product.html?id=" + product._id);
-
+		
 		listProduct.appendChild(productBlock);
-     	productBlock.appendChild(productLeft);
-     	productLeft.appendChild(productImage);
-     	productBlock.appendChild(productRight);
-     	productRight.appendChild(productNom);
-     	productRight.appendChild(productPrix);
-     	productRight.appendChild(productLink);
-
-      	productNom.textContent = product.name;
-      	productPrix.textContent = product.price / 100 + " euros";
-		productLink.textContent = "Afficher la page du produit";
+		productBlock.appendChild(productLeft);
+		productLeft.appendChild(productImage);
+		productBlock.appendChild(productRight);
+		productRight.appendChild(productName);
+		productRight.appendChild(productPrice);
+		productRight.appendChild(productLink);
+		//Afiichage nom, prix, lien afficher le produit
+		productName.textContent = product.name;
+		productPrice.textContent = product.price / 100 + " euros";
+	   	productLink.textContent = "Afficher la page du produit";
     });
 }
 
+function onLoardCartNumbers() {
+	let productNumbers = localStorage.getItem('cartNumbers');
 
+	if(productNumbers) {
+		document.querySelector('.cart span').textContent = productNumbers;
+	}
+}
+
+onLoardCartNumbers();
+
+
+  
