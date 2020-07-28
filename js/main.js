@@ -6,7 +6,7 @@ let idProduct = "";
 //Appel de l'API
 
 
-getProducts = () =>{
+ function getProducts () {
 	return new Promise((resolve) =>{
 		let request = new XMLHttpRequest();
 		request.onreadystatechange = function() {

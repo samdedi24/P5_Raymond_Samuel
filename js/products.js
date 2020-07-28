@@ -1,6 +1,6 @@
 //Détails des produits quand l'utilisateur clique sur afficher le poduit
 
-async function detailProduct(){
+async function detailProduct() {
     
     idProduct = location.search.substring(4);
     const productSelected = await getProducts();
@@ -72,7 +72,7 @@ let userCart = JSON.parse(localStorage.getItem("userCart"));
 
 //produit ajouter au panier au clic
 
-addCart = () => { 
+function addCart () { 
 	let inputBuy = document.getElementById("addProductCart");
 	inputBuy.addEventListener("click", async function() {
 		const products = await getProducts();
