@@ -54,8 +54,8 @@ function summary () {
         let removeProduct = document.createElement("button");
 
         //Annuler le produit selectionner sur l'icone
-        rowTable.setAttribute("id", "product"+i);
-        removeProduct.setAttribute("id", "remove"+i);
+        rowTable.setAttribute("id", "product"+ i);
+        removeProduct.setAttribute("id", "remove"+ i);
         removeProduct.setAttribute('class', "fas fa-trash cancelProduct");
         removeProduct.addEventListener('click', cancelProduct.bind(i));
         i++;
@@ -69,6 +69,7 @@ function summary () {
         //Row content
         nameProduct.innerHTML = product.name;
         productPriceUnit.textContent = product.price / 100 + " €";
+        //columnUnity.textContent = userCart;
         });
 
         //Ligne total de tout 
@@ -95,7 +96,6 @@ function summary () {
 function cancelProduct (i) {
     console.log("Retire le produit " + i);
     userCart.splice(i, 1);
-    //localStorage.setItem('userCart', JSON.stringify(userCart));
 };
 
 summary();

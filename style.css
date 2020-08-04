@@ -12,6 +12,9 @@ header .overlay {
   bottom: 0;
   background-color: rgba(10, 10, 10, 0.3);
 }
+header h1 {
+  font-size: 35px;
+}
 header nav {
   position: absolute;
   top: 0;
@@ -36,6 +39,10 @@ header nav li a {
 }
 header nav span {
   padding-left: 5px;
+}
+
+main h2 {
+  text-align: center;
 }
 
 .cart a {
@@ -68,7 +75,67 @@ header nav span {
 }
 
 #productImg {
-  width: 35%;
+  width: 20%;
+}
+
+.flex-block {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+}
+
+#cart-summary {
+  display: flex;
+  margin: auto;
+}
+
+#resume-cart {
+  text-align: center;
+}
+
+table {
+  margin: auto;
+  border: none;
+  letter-spacing: 1px;
+  font-size: 16px;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  border: 1px solid black;
+  padding: 12px 22px;
+}
+
+th {
+  background-color: greenyellow;
+}
+
+td {
+  text-align: center;
+}
+
+.form {
+  width: 600px;
+  margin-right: 140px;
+  margin-top: 150px;
+}
+.form .form__group {
+  display: flex;
+}
+.form .form__group label {
+  flex: none;
+  display: block;
+  width: 130px;
+  font-weight: bold;
+  font-size: 1em;
+}
+.form .form__group .input-control {
+  flex: 1 1 auto;
+  display: block;
+  margin-bottom: 10px;
+  margin-right: 8px;
+  padding: 4px;
 }
 
 /*# sourceMappingURL=style.css.map */

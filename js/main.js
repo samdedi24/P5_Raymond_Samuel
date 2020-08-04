@@ -15,11 +15,8 @@ let idProduct = "";
 				resolve(JSON.parse(this.responseText));
 				console.log("connection ok");
 				error = document.getElementById("error");
-				if(error){
-					error.remove();
-				}
 			} else {
-				console.log("ERROR");
+				//console.log("ERROR");
 			}
 		}
 		request.open("GET", API + idProduct);

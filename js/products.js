@@ -43,8 +43,8 @@ for (let i=0; i < carts.length; i++) {
 	})
 }
 
-function cartNumbers(product) {
-	console.log("Produit ajouté au panier", product);
+function cartNumbers() {
+	console.log("Produit ajouté au panier", productName);
 	let productNumbers = localStorage.getItem('cartNumbers');
 	productNumbers = parseInt(productNumbers);
 
@@ -84,7 +84,7 @@ function addCart () {
 
 //fonction prix total
 
-function totalCost() {
+function totalCost(productPrice) {
 	let totalPrice = localStorage.getItem("totalCost");
 	if (totalPrice == undefined) {
 	  let productPrice = localStorage.getItem("price");
