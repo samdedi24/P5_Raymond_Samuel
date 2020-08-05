@@ -95,8 +95,77 @@ function summary () {
 
 function cancelProduct (i) {
     console.log("Retire le produit " + i);
-    userCart.splice(i, 1);
+    //userCart.splice(i, 1);
 };
+
+class Client {
+    constructor(forNom, forPrenom, forMail, forAdresse, forVille) {
+        (this.forNom = forNom),
+        (this.forPrenom = forPrenom),
+        (this.forMail = forMail),
+        (this.forAdresse = forAdresse),
+        (this.forVille = forVille);
+    }
+}
+
+//Vérification formulaire
+
+let forNom = document.getElementById("forNom");
+let forPrenom = document.getElementById("forPrenom");
+let forMail = document.getElementById("forMail");
+let forAdresse = document.getElementById("forAdresse");
+let forVille = document.getElementById("forVille");
+let orderButton = document.querySelector(".order-submit");
+let validationButton = document.querySelector(".btn-primary");
+
+orderButton.addEventListener("click", function (event){
+    event.preventDefault();
+    let newClient = new Client(
+        forNom.value,
+        forPrenom.value,
+        forMail.value,
+        forAdresse.value,
+        forVille.value
+    );
+
+    //POST api
+    fetch("http://localhost:3000/api/cameras/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            contact : {
+                firstName: newClient.forNom,
+                lastName: newClient.forPrenom,
+                address: newClient.forAdresse,
+                city: newClient.forVille,
+                email: newClient.forMail,
+            },
+        }),
+    })
+    .then ((res) => {
+        if (res.ok) {
+            alert("Vos indormations sont enregistrées");
+            validationButton.classList.remove("disabled");
+            return res.json();
+        } else {
+            alert("Vous devez remplir tout les champs")
+        }
+    })
+    .then ((data) =>{
+        localStorage.setItem("orderInfos", JSON.stringify(data));
+    }) 
+    .catch((error) => console.log("erreur de type : ", error));
+});
+
+
+
+
+
+
+
+
+
+
 
 summary();
 cancelProduct();
