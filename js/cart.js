@@ -104,11 +104,11 @@ function cancelProduct (i) {
 //Vérification des inputs
 
 function verifInput () {
-    let forNom = document.getElementById("forNom").value;
-    let forPrenom = document.getElementById("forPrenom").value;
-    let forMail = document.getElementById("forMail").value;
-    let forAdresse = document.getElementById("forAdresse").value;
-    let forVille = document.getElementById("forVille").value;
+    let forNom = document.getElementById("forTheNom").value;
+    let forPrenom = document.getElementById("forThePrenom").value;
+    let forMail = document.getElementById("forTheMail").value;
+    let forAdresse = document.getElementById("forTheAdresse").value;
+    let forVille = document.getElementById("forTheVille").value;
 
     //utilisez [A-Za-z] pour minuscules et majuscules et [A-Z] pour les majuscules uniquement
     let verifString = /[a-zA-Z]/;
@@ -208,8 +208,8 @@ function sendData (objectRequest) {
 //Validation infos et panier
 
 function validCart () {
-    let btnPrimary = document.getElementById("passedOrder");
-    btnPrimary.addEventListener("click", function(){
+    let btn = document.getElementById("passedOrder");
+    btn.addEventListener("click", function(){
         if (verifCart() == true && verifInput() != null){
             console.log("Envoi possible");
             let object = {
@@ -231,5 +231,7 @@ function validCart () {
 
 
 summary();
-//cancelProduct();
+verifInput();
 verifCart();
+validCart();
+
