@@ -9,3 +9,5 @@ function validOrder () {
         window.open("./index.html");
     }
 }
+
+validOrder();

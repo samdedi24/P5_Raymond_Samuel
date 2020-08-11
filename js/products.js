@@ -82,21 +82,5 @@ function addCart () {
 	});
 };
 
-//fonction prix total
-
-function totalCost(productPrice) {
-	let totalPrice = localStorage.getItem("totalCost");
-	if (totalPrice == undefined) {
-	  let productPrice = localStorage.getItem("price");
-	  localStorage.setItem("totalCost", productPrice / 100);
-	} else {
-	  let productPrice = localStorage.getItem("price");
-	  totalPrice = parseInt(totalPrice);
-	  totalPrice = localStorage.setItem("totalCost",totalPrice + productPrice / 100);
-	}
-  }
-
-
 onLoardCartNumbers();
-totalCost();
 

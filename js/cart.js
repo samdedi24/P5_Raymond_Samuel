@@ -30,6 +30,8 @@ function summary () {
     let columnTotal = document.createElement("th");
     let columnPayed = document.createElement("td");
 
+    let contact;
+
     //Placement dans mon cart html
     let billSection = document.getElementById("cart-summary");
     billSection.appendChild(bill);
@@ -104,11 +106,11 @@ function cancelProduct (i) {
 //Vérification des inputs
 
 function verifInput () {
-    let forNom = document.getElementById("forTheNom").value;
-    let forPrenom = document.getElementById("forThePrenom").value;
-    let forMail = document.getElementById("forTheMail").value;
-    let forAdresse = document.getElementById("forTheAdresse").value;
-    let forVille = document.getElementById("forTheVille").value;
+    let forNom = document.getElementById("forNom").value;
+    let forPrenom = document.getElementById("forPrenom").value;
+    let forMail = document.getElementById("forMail").value;
+    let forAdresse = document.getElementById("forAdresse").value;
+    let forVille = document.getElementById("forVille").value;
 
     //utilisez [A-Za-z] pour minuscules et majuscules et [A-Z] pour les majuscules uniquement
     let verifString = /[a-zA-Z]/;
@@ -119,7 +121,7 @@ function verifInput () {
     let verifSpeChara = /[§!@#$%^&*(),.?":{}|<>]/;
     //fin de controle
     let verifMessage = "";
-    let contact;
+    
 
     //Verif des différents inputs 2
     if (verifNumber.test(forNom) == true || verifSpeChara.test(forNom) == true || forNom == ""){
@@ -194,7 +196,7 @@ function sendData (objectRequest) {
         request.onreadystatechange = function() {
             if(this.readyState == XMLHttpRequest.DONE && this.status == 201) {
                 sessionStorage.setItem("order", this.responseText);
-                document.forms["form-cart"].action = './order-confirm.html';
+                document.forms["form-cart"].action = './order-comfirm.html';
                 document.forms["form-cart"].submit();
                 resolve(JSON.parse(this.responseText));
             }
@@ -208,8 +210,8 @@ function sendData (objectRequest) {
 //Validation infos et panier
 
 function validCart () {
-    let btn = document.getElementById("passedOrder");
-    btn.addEventListener("click", function(){
+    let btnPrimary = document.getElementById("passedOrder");
+    btnPrimary.addEventListener("click", function(){
         if (verifCart() == true && verifInput() != null){
             console.log("Envoi possible");
             let object = {
@@ -218,7 +220,7 @@ function validCart () {
             };
             let objectRequest = JSON.stringify(object);
             sendData(objectRequest);
-
+            console.log("Admin : " + objectRequest);
             //Après commande effectuée
             contact = {};
             products = [];
