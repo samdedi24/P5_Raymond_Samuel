@@ -138,7 +138,6 @@ function verifInput () {
 
 function verifCart () {
     let statutCart = JSON.parse(localStorage.getItem("userCart"));
-
     if (statutCart == null) {
         alert("Il y a eu un problème, recharger votre page");
         return false
@@ -151,6 +150,27 @@ function verifCart () {
         });
         return true;
     }
+};
+
+function validCart () {
+    let btnPrimary = document.getElementById("passedOrder");
+    btnPrimary.addEventListener("click", function(){
+        if (verifCart() == true && verifInput() != null){
+            console.log("Envoi possible");
+            let object = {
+                contact,
+                products
+            };
+            let objectRequest = JSON.stringify(object);
+            sendData(objectRequest);
+            console.log("Admin : " + objectRequest);
+            contact = {};
+            products = [];
+            localStorage.clear();
+        } else {
+            console.log("Erreur");
+        };
+    });
 };
 
 //Post de l'API
@@ -171,28 +191,6 @@ function sendData (objectRequest) {
         request.send(objectRequest);
     });
 };
-
-function validCart () {
-    let btnPrimary = document.getElementById("passedOrder");
-    btnPrimary.addEventListener("click", function(){
-        if (verifCart() == true && verifInput() != null){
-            console.log("Envoi possible");
-            let object = {
-                contact,
-                products
-            };
-            let objectRequest = JSON.stringify(object);
-            sendData(objectRequest);
-            console.log("Admin : " + objectRequest);
-            contact = {};
-            products = [];
-            localStorage.clear();
-        } else {
-            console.log("Erreur comme d'hab");
-        };
-    });
-};
-
 
 summary();
 verifInput();

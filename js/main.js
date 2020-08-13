@@ -10,8 +10,7 @@ function getProducts () {
 			if(this.readyState == XMLHttpRequest.DONE && this.status == 200) 
 			{
 				resolve(JSON.parse(this.responseText));
-				console.log("connection ok");
-				error = document.getElementById("error");
+				console.log("Connexion ok");
 			} else {
 				//console.log("ERROR");
 			}
@@ -31,25 +30,25 @@ async function allProductsList(){
 
 	products.forEach((product) => { 
     let productBlock = document.createElement("div");
-    let productLeft = document.createElement("div");
-    let productRight = document.createElement("div");
+    let productPto = document.createElement("div");
+    let productPtt = document.createElement("div");
     let productImage = document.createElement("img");
     let productName = document.createElement("h2");
     let productPrice = document.createElement("p");
     let productLink = document.createElement("a");
 		
-    productLeft.setAttribute("class", "list-product__block--left");
+    productPto.setAttribute("class", "list-product__block--left");
     productImage.setAttribute("src", product.imageUrl);
     productImage.setAttribute("alt", "image du produit"); 
     productLink.setAttribute("href", "product.html?id=" + product._id);
 		
 	listProduct.appendChild(productBlock);
-	productBlock.appendChild(productLeft);
-	productLeft.appendChild(productImage);
-	productBlock.appendChild(productRight);
-	productRight.appendChild(productName);
-	productRight.appendChild(productPrice);
-	productRight.appendChild(productLink);
+	productBlock.appendChild(productPto);
+	productPto.appendChild(productImage);
+	productBlock.appendChild(productPtt);
+	productPtt.appendChild(productName);
+	productPtt.appendChild(productPrice);
+	productPtt.appendChild(productLink);
 		
 	productName.textContent = product.name;
 	productPrice.textContent = product.price / 100 + " euros";
