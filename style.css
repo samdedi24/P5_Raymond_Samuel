@@ -156,14 +156,5 @@ td {
   padding: 15px;
   background-color: white;
 }
-.order-comfirm_cart .order-comfirm_cart__resume i {
-  color: yellowgreen;
-  font-size: 35px;
-  border: 8px solid black;
-}
-.order-comfirm_cart .order-comfirm_cart__resume__congrat {
-  color: yellowgreen;
-  font-size: 38px;
-}
 
 /*# sourceMappingURL=style.css.map */
