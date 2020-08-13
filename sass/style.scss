@@ -9,10 +9,11 @@ header {
       height: 100%;
       right: 0;
       bottom: 0;
-      background-color: rgba(10,10,10,0.3);
+      background-color: #232F3E;
     }
     h1 {
       font-size: 35px;
+      color: white;
     }
     nav {
       position: absolute;
@@ -39,6 +40,10 @@ header {
           padding-left: 5px;
         }
     }
+}
+
+body {
+  background-color: #EAEDED;
 }
 
 main h2 {
@@ -72,10 +77,11 @@ main h2 {
 .list-product__block--left img {
   width: 50%; 
   text-align: center;
+  padding-bottom: 15px;
 }
 
 #productImg {
-  width: 20%;
+  width: 40%;
 }
 
 .flex-block {
@@ -108,7 +114,7 @@ td, th {
 }
 
 th {
-  background-color: greenyellow;
+  background-color: #F0BF47;
 }
 
 td {
@@ -116,7 +122,7 @@ td {
 }
 
 .form {
-  width: 600px;
+  width: 700px;
   margin-right: 140px;
   margin-top: 150px;
     .form__group {
@@ -124,16 +130,38 @@ td {
     }
     .form__group label {
       flex: none;
-      display: block;
+      display: flex;
       width: 130px;
       font-weight: bold;
       font-size: 1em;
     }
     .form__group .input-control {
       flex: 1 1 auto;
-      display: block;
+      display: flex;
       margin-bottom: 10px;
       margin-right: 8px;
       padding: 4px;
+    }
+}
+
+.cancelProduct {
+  margin: 1rem;
+}
+
+.order-comfirm_cart {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 200px;
+  padding: 15px;
+  background-color: white;
+    .order-comfirm_cart__resume i {
+      color: yellowgreen;
+      font-size: 35px;
+      border: 8px solid black;
+    }
+    .order-comfirm_cart__resume__congrat{
+      color: yellowgreen;
+      font-size: 38px;
     }
 }

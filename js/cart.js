@@ -1,6 +1,5 @@
 function onLoardCartNumbers() {
 	let productNumbers = localStorage.getItem('cartNumbers');
-
 	if(productNumbers) {
 		document.querySelector('.cart span').textContent = productNumbers;
 	}
@@ -10,16 +9,7 @@ onLoardCartNumbers();
 
 function summary () {
     if(JSON.parse(localStorage.getItem("userCart")).length > 0){
-        document.getElementById("resume-cart").remove();  //Si le panier est vide le message apparait 
-
-    /*<table class="table">
-        <thead>
-            <tr><th>Article</th><th>Prix</th><th>Quantité</th></tr>
-        </thead>
-        <tbody id="cart-tablebody"></tbody>
-    </table>*/
-
-    //Creation du tableau en JS, reprise exemple avec du html
+    document.getElementById("resume-cart").remove(); 
 
     let bill = document.createElement("table");
     let rowTable = document.createElement("tr");
@@ -32,7 +22,6 @@ function summary () {
 
     let contact;
 
-    //Placement dans mon cart html
     let billSection = document.getElementById("cart-summary");
     billSection.appendChild(bill);
     bill.appendChild(rowTable);
@@ -42,57 +31,45 @@ function summary () {
     rowTable.appendChild(columnPriceUnit);
     columnPayed.textContent = "Prix du produit";
 
-    //rowTable.appendChild(columnRemove);
-    //columnRemove.textContent = "Annuler";
-
-        //Init ID
     let i = 0;
 
     JSON.parse(localStorage.getItem("userCart")).forEach((product)=> {
-        //Lignes
+        
         let rowProduct = document.createElement("tr");
         let nameProduct = document.createElement("td");
         let productPriceUnit = document.createElement("td");
         let removeProduct = document.createElement("i");
 
-        //Annuler le produit selectionner sur l'icone
         rowTable.setAttribute("id", "product"+ i);
         removeProduct.setAttribute("id", "remove"+ i);
         removeProduct.setAttribute('class', "fas fa-trash cancelProduct");
         removeProduct.addEventListener('click', cancelProduct.bind(i));
         i++;
 
-        //HTML
         bill.appendChild(rowProduct);
         rowProduct.appendChild(nameProduct);
         rowProduct.appendChild(productPriceUnit);
         rowProduct.appendChild(removeProduct);
         
-        //Row content
         nameProduct.innerHTML = product.name;
         productPriceUnit.textContent = product.price / 100 + " €";
         });
 
-        //Ligne total de tout 
         bill.appendChild(rowTotal);
         rowTotal.appendChild(columnTotal);
         columnTotal.textContent = "Montant/total à payer";
         rowTotal.appendChild(columnPayed);
         columnPayed.setAttribute("id", "sumTotal");
 
-        //Addition du total
         let totalPayed = 0;
         JSON.parse(localStorage.getItem("userCart")).forEach((product)=>{
             totalPayed += product.price / 100;
         });
 
-        //Insertion prox total last column
         document.getElementById("sumTotal").textContent = totalPayed + " €";
         console.log("Total : " + totalPayed);
     };
 }
-
-//Supprimer un produit (icon poubelle plus haut)
 
 function cancelProduct (i) {
     console.log("Retire le produit " + i);
@@ -103,27 +80,18 @@ function cancelProduct (i) {
     window.location.reload();
 };
 
-//Vérification des inputs
-
 function verifInput () {
     let forNom = document.getElementById("forNom").value;
     let forPrenom = document.getElementById("forPrenom").value;
     let forMail = document.getElementById("forMail").value;
     let forAdresse = document.getElementById("forAdresse").value;
     let forVille = document.getElementById("forVille").value;
-
-    //utilisez [A-Za-z] pour minuscules et majuscules et [A-Z] pour les majuscules uniquement
     let verifString = /[a-zA-Z]/;
-    //correspond à tout nombre compris entre 0 et 9
     let verifNumber = /[0-9]/;
-    //verif email et spécial caract
     let verifMail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     let verifSpeChara = /[§!@#$%^&*(),.?":{}|<>]/;
-    //fin de controle
     let verifMessage = "";
     
-
-    //Verif des différents inputs 2
     if (verifNumber.test(forNom) == true || verifSpeChara.test(forNom) == true || forNom == ""){
         verifMessage = "Vérifier votre nom";
     } else {
@@ -154,11 +122,9 @@ function verifInput () {
         console.log("La ville est ok")
     };
 
-    //Input pas bon message alertant
     if (verifMessage != "") {
         alert("Il est nécessaire de :" + "\n" + verifMessage);
     } else {
-        //objet contact controllers ligne 39
         contact = {
             firstName : forNom,
             lastName : forPrenom,
@@ -169,8 +135,6 @@ function verifInput () {
         return contact;
     };
 };
-
-//fonction on vérifie si l'utilisateur à bien un artcile au panier pour pourvoir continuer
 
 function verifCart () {
     let statutCart = JSON.parse(localStorage.getItem("userCart"));
@@ -190,6 +154,7 @@ function verifCart () {
 };
 
 //Post de l'API
+
 function sendData (objectRequest) {
     return new Promise((resolve) =>{
         let request = new XMLHttpRequest();
@@ -207,8 +172,6 @@ function sendData (objectRequest) {
     });
 };
 
-//Validation infos et panier
-
 function validCart () {
     let btnPrimary = document.getElementById("passedOrder");
     btnPrimary.addEventListener("click", function(){
@@ -221,7 +184,6 @@ function validCart () {
             let objectRequest = JSON.stringify(object);
             sendData(objectRequest);
             console.log("Admin : " + objectRequest);
-            //Après commande effectuée
             contact = {};
             products = [];
             localStorage.clear();

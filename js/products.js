@@ -1,13 +1,9 @@
-//Détails des produits quand l'utilisateur clique sur afficher le poduit
-
-async function detailProduct() {
-    
+async function detailProduct() { 
     idProduct = location.search.substring(4);
     const productSelected = await getProducts();
     let section = document.getElementById("section");
     section.style.display = "block";
 	
-	//Détail du produit selectionné grâce aux ID 
     document.getElementById("productImg").setAttribute("src", productSelected.imageUrl);
     document.getElementById("productName").innerHTML = productSelected.name;
     document.getElementById("productDescription").innerHTML = productSelected.description;
@@ -15,15 +11,13 @@ async function detailProduct() {
 	
 	switch(productChoose){
 		case "cameras":
-		productSelected.lenses.forEach((product)=>{				//Option choisir sa lentille
+		productSelected.lenses.forEach((product)=>{				
 			let optionProduct = document.createElement("option");
 			document.getElementById("optionSelect").appendChild(optionProduct).innerHTML = product;
 		});
 		break;
 	}
 };
- 
-//nombre ajouter au panier dans le nav
 
 function onLoardCartNumbers() {
 	let productNumbers = localStorage.getItem('cartNumbers');
@@ -32,8 +26,6 @@ function onLoardCartNumbers() {
 		document.querySelector('.cart span').textContent = productNumbers;
 	}
 }
-
-//nombre de produit ajouté
 
 let carts = document.querySelectorAll('#addProductCart');
 let products = []
@@ -47,7 +39,6 @@ function cartNumbers() {
 	console.log("Produit ajouté au panier", productName);
 	let productNumbers = localStorage.getItem('cartNumbers');
 	productNumbers = parseInt(productNumbers);
-
 	if (productNumbers) {
 		localStorage.setItem('cartNumbers', productNumbers + 1);
 		document.querySelector('.cart span').textContent = productNumbers + 1;
@@ -57,20 +48,15 @@ function cartNumbers() {
 	}
 }
 
-//let cartInit = [];
-//localStorage.setItem("userCart", JSON.stringify(cartInit));
-
 if(localStorage.getItem("userCart")){
 	console.log("le panier existe dans le localStorage");
 } else {
 	console.log("Le panier n'existe pas");
   	let cartInit = [];
   	localStorage.setItem("userCart", JSON.stringify(cartInit));
-  };
+};
 
 let userCart = JSON.parse(localStorage.getItem("userCart"));
-
-//produit ajouter au panier au clic
 
 function addCart () { 
 	let inputBuy = document.getElementById("addProductCart");
