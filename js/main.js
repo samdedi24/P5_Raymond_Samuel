@@ -1,4 +1,4 @@
-const productChoose = "cameras"
+const productChoose = "cameras";
 const API = "http://localhost:3000/api/" + productChoose + "/"; 
 
 let idProduct = "";

@@ -1,13 +1,3 @@
-if(localStorage.getItem("userCart")){
-	console.log("le panier existe dans le localStorage");
-} else {
-	console.log("Le panier n'existe pas");
-  	let cartInit = [];
-  	localStorage.setItem("userCart", JSON.stringify(cartInit));
-};
-
-let userCart = JSON.parse(localStorage.getItem("userCart"));
-
 async function detailProduct() { 
     idProduct = location.search.substring(4);
     const productSelected = await getProducts();
@@ -19,7 +9,7 @@ async function detailProduct() {
     document.getElementById("productDescription").innerHTML = productSelected.description;
 	document.getElementById("productPrice").innerHTML = productSelected.price / 100 + " euros";
 	
-	switch(productChoose){
+	switch(API){
 		case "cameras":
 		productSelected.lenses.forEach((product)=>{				
 			let optionProduct = document.createElement("option");
@@ -28,6 +18,16 @@ async function detailProduct() {
 		break;
 	}
 };
+
+if(localStorage.getItem("userCart")){
+	console.log("le panier existe dans le localStorage");
+} else {
+	console.log("Le panier n'existe plus");
+  	let cartInit = [];
+  	localStorage.setItem("userCart", JSON.stringify(cartInit));
+};
+
+let userCart = JSON.parse(localStorage.getItem("userCart"));
 
 function addCart () { 
 	let inputBuy = document.getElementById("addProductCart");
@@ -52,6 +52,14 @@ function cartNumbers() {
 	}
 }
 
+let carts = document.querySelectorAll('#addProductCart');
+let products = []
+for (let i=0; i < carts.length; i++) {
+	carts[i].addEventListener('click', () => {
+		cartNumbers(products[i]);
+	})
+}
+
 function onLoardCartNumbers() {
 	let productNumbers = localStorage.getItem('cartNumbers');
 
@@ -60,12 +68,6 @@ function onLoardCartNumbers() {
 	}
 }
 
-let carts = document.querySelectorAll('#addProductCart');
-let products = []
-for (let i=0; i < carts.length; i++) {
-	carts[i].addEventListener('click', () => {
-		cartNumbers(products[i]);
-	})
-}
+
 onLoardCartNumbers();
 
