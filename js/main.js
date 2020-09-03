@@ -3,7 +3,7 @@ const API = "http://localhost:3000/api/" + productChoose + "/";
 
 let idProduct = "";
 
-function getProducts () {
+async function getProducts () {
 	return new Promise((resolve) =>{
 		let request = new XMLHttpRequest();
 		request.onreadystatechange = function() {
