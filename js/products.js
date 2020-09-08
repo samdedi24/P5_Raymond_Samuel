@@ -9,7 +9,7 @@ async function detailProduct() {
     document.getElementById("productDescription").innerHTML = productSelected.description;
 	document.getElementById("productPrice").innerHTML = productSelected.price / 100 + " euros";
 	
-	switch(API){
+	switch(productChoose){
 		case "cameras":
 		productSelected.lenses.forEach((product)=>{				
 			let optionProduct = document.createElement("option");
@@ -62,7 +62,6 @@ for (let i=0; i < carts.length; i++) {
 
 function onLoardCartNumbers() {
 	let productNumbers = localStorage.getItem('cartNumbers');
-
 	if(productNumbers) {
 		document.querySelector('.cart span').textContent = productNumbers;
 	}
